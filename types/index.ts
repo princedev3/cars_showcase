@@ -49,6 +49,12 @@ export interface FilterProp{
     year:number,
     
 }
+export interface HomeProps{
+   
+    searchParams:FilterProp,
+    
+}
+
 export interface ShowMoreProp{
    
    pageNumber:number,

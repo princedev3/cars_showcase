@@ -1,10 +1,10 @@
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from '@/component'
 import { fuels, yearsOfProduction } from '@/constant'
-import { CarProp } from '@/types'
+import { CarProp, HomeProps } from '@/types'
 import { fetchCars } from '@/utils'
 import Image from 'next/image'
 
-export default async function Home({searchParams}) {
+export default async function Home({searchParams}:HomeProps) {
 
   const allCars = await fetchCars({
     manufacturer:searchParams.manufacturer ||"",
@@ -35,7 +35,7 @@ export default async function Home({searchParams}) {
               allCars.length>0 ?(
                 <section>
                   <div className="home__cars-wrapper">
-                    {allCars?.map((car,id)=><CarCard car={car}  key={id} />
+                    {allCars?.map((car)=><CarCard car={car}  key={car.highway_mpg} />
                     )}
                   </div>
                   <ShowMore pageNumber={(searchParams.limit||10)/10} isNext={(searchParams.limit||10)>allCars.length} />
